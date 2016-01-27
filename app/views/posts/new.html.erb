@@ -1,0 +1,15 @@
+<!-- displays checkboxes for tagging new posts -->
+<% if user_signed_in? %>
+	<div id="respond">
+		<%= form_for(@new_post, url: '/posts', method: 'post') do |f| %>
+		          	<%= f.check_box :arts, {:checked=>false}%> <%= f.label :arts %>
+		          	<%= f.check_box :humor, {:checked=>false}%> <%= f.label :humor %>
+		          	<%= f.check_box :politics, {:checked=>false}%> <%= f.label :politics %>
+		          	<%= f.check_box :science , {:checked=>false}%> <%= f.label :science  %>
+		          	<%= f.check_box :sports , {:checked=>false}%> <%= f.label :sports  %>
+		          	<%= f.check_box :travel, {:checked=>false}%> 	<%= f.label :travel %>
+	            	<%= f.text_area :body, class: 'form-control', placeholder: "Go ahead! Save someone from the misery of bad small talk!"%>
+	            	<input type="submit" id="submit" <%= f.submit "Post" %>
+		<% end %> 
+	</div>
+<% end %>

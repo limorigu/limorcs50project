@@ -1,0 +1,68 @@
+<p>
+<!-- display content and ratig for each post -->
+  <h1>Post:</h1>
+  <%= @post.body %>
+  <br/>
+  <br/>
+  <%= @post.rating %> people liked this post
+  <br/> 
+  <br/>
+  <div id="respond">
+      <!-- links to like or dislike a post -->
+      <%= link_to("Like", '/votes/'+@post.id.to_s+'?vote=up') %>
+      <%= link_to("Dislike", '/votes/'+@post.id.to_s+'?vote=down') %>
+  </div>
+</p>
+
+<br/>
+
+<!-- renders comments for the post selected  -->
+<h1>Comments</h1>
+<% if @post.comments.any? %>
+  <% @post.comments.each do |comment| %>
+    <p>
+      <strong>Commenter:</strong>
+      <% if comment.user_id %>
+        <%= comment.user.handle %>
+      <% end %>
+    </p>
+   
+    <p>
+      <strong>Comment:</strong>
+      <%= comment.body %>
+    </p>
+
+    <p>
+    <% if comment.user == current_user %>
+      <%= link_to 'Delete Comment', [comment.post, comment],
+                   method: :delete,
+                   data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    </p>
+  <% end %>
+<% else %>
+  <div class='bold'>No comments!</div>
+<% end %>
+
+<br/> 
+<br/>
+<!-- renders comment form -->
+  <h2>Add a comment:</h2>
+  <div id="respond">
+    <%= form_for([@post, @post.comments.build]) do |f| %>
+      <p>
+        <%= f.text_area :body%>
+        <br type="clear">
+        <input type="submit" id="submit" <%= f.submit "Post comment" %>
+      </p>
+    <% end %>
+  </div>
+
+
+<% if false %>
+<% if @post.user == current_user %>
+  <%= link_to 'Edit Post', edit_post_path(@post) %> |
+<% end %>
+<% end %>
+
+<%= link_to 'Back to Posts', posts_path %>

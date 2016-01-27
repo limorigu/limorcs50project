@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Conversaid</title>
+    <!-- linked CSS templates from free-css.com -->
+    <link rel="stylesheet" href="/touch-of-purple/layout/styles/layout.css">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body id="top">  
+    <div class="wrapper col1">
+      <div id="header">
+        <div class="fl_left">
+        <h1>
+          <%= link_to 'Conversaid', '/', class: 'btn btn-default' %> 
+        </h1>
+        <p>your loyal companion in the small talk world!</p>
+        </div>
+        <br class="clear">
+      </div>
+    </div>
+
+    <div class="wrapper col2">
+      <!-- checks to make sure that user is signed in before displaying links below -->
+      <% if user_signed_in? %>
+      <div id="topbar">
+        <div id="topnav">
+          <ul>
+            <li><%= link_to 'Home', '/', class: 'btn btn-default' %></li>
+            <% if true %>
+              <!-- links to make new post, each category, and other features -->
+              <li><%= link_to 'New Post', new_post_path %></li>
+              <li><%= link_to 'Profile','/profile'%></li>
+              <li><%= link_to 'Arts', '/category/arts' %></li>
+              <li><%= link_to 'Humor', '/category/humor' %></li>
+              <li><%= link_to 'Politics', '/category/politics' %></li>
+              <li><%= link_to 'Science', '/category/science' %></li>
+              <li><%= link_to 'Sports', '/category/sports' %></li>
+              <li><%= link_to 'Travel', '/category/travel' %></li>
+              <li><%= link_to 'Random','/category/random'%></li>
+              <li><%= link_to 'Adventurous','/adv'%></li>
+            <% end %>
+          </ul>
+        </div>
+      <div id="search"></div>
+      <br class="clear">
+    </div>
+  <% else %>
+<% end %>
+
+  </div>
+
+  <div class="wrapper col3">
+    <div id="breadcrumb">
+      <ul>
+          <!-- decides what statement to display based on if the user is signed in or not  -->
+          <% if user_signed_in? %>
+            <li>
+              You are signed in as <%= current_user.handle %>
+              &nbsp;
+              <%= link_to 'Sign out!', destroy_user_session_path, method: 'delete' %>
+            </li>  
+
+            <li>
+              &nbsp;
+              To view, edit or delete your profile, click
+              <%= link_to 'here', '/profile' %>. 
+            </li> 
+          <% else %>
+            <li>
+              <!-- if user isn't signed in, links are provided to sign in or create a new account -->
+              You aren't signed in! Please click <%= link_to 'here', new_user_registration_path %> to sign up
+              or <%= link_to 'here', new_user_session_path %> to sign in. 
+            </li> 
+          <% end %>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="wrapper col4">
+    <div id="container">
+      
+      <% if flash[:success] %>
+      <div class="wrapper col3"><%= flash[:success] %></div>
+      <% end %> 
+      
+      <% if flash[:error] %>
+      <div class="wrapper col3"><%= flash[:error] %></div>
+      <% end %> 
+      <%= yield %>
+
+    </div>
+  </div>
+
+
+
+  <div class="wrapper col6">
+    <div id="copyright">
+      <p class="fl_left">
+        "Copyright © 2014 - All Rights Reserved - SML"
+        <a href="#">Conversaid</a>
+      </p>
+      <br class="clear">
+    </div>
+  </div>
+
+  </body>
+</html>

@@ -1,0 +1,13 @@
+<!-- refers to _post.html.erb -->
+<div id="container">
+	<h1>Welcome to Conversaid!</h1>
+
+	<% if user_signed_in? %>
+		<div id="posts">
+			<%= render 'posts' %>
+		</div>
+	<% else %>
+		<p>Please log in to get Convers-aid</p>
+	<% end %>
+</div>
+

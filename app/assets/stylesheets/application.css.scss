@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+	font-family: georgia, serif;
+	background-color: #151515;
+}
+
+.box {
+	background-color: white;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 50px auto;
+	width: 70%;
+}
+
+.delete {
+	margin-left: 5px;
+}
+
+.small {
+	font-size: 12px;
+}
+
+.wrap {
+	padding: 10px;
+	border-bottom: 1pt solid #888;
+	
+}
+
+.wrap1 {
+	font-weight: bold;
+	padding: 10px;
+	border-bottom: 1pt solid #888;
+	font-size: 28px;
+	
+}
+
+.flash {
+	font-weight: bold;
+	padding: 20px;
+	margin: 20px 0px;
+	border-radius: 20px;
+}
+
+.success {
+	color: green;
+	background-color: rgba(0,255,0,0.2);
+	border: green solid thin;
+}
+
+.error {
+	color: red;
+	background-color: rgba(255,0,0,0.2);
+	border: red solid thin;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.post {
+	padding: 10px;
+	transition: 0.2s;
+	border-bottom: 1pt solid #888;
+	
+
+	&:hover {
+    	background-color: #f1f1f1;
+  	}
+}
+
+.bold {
+	font-weight: bold;
+}
+
+.bold1 {
+	font-weight: bold;
+	font-size: 20px;
+}

@@ -1,0 +1,16 @@
+In order to use our project, one must follow these steps:
+(1) download the files in the zipped folder to your computer, and unzip it
+(2) open a new terminal and change the directory to the folder that you’ve unzipped
+(3) run the command rails server on the command line*
+(4) once you see that the command has gone through without error and you see port =
+3000 (or potentially some other port, although for the purposes of this user manual we
+will assume 3000) in the command line, open a new window or tab in your web browser
+and type http://localhost:3000 into the addressable. You should see the home/index
+page of our website show up.
+(5) Explore the different links on the home page, and experiment with posting,
+commenting, rating, and/or trying the random and adventurous features.
+Link to Video Presentation: https://www.youtube.com/watch?
+v=qcWw2ecXrpA&feature=em-share_video_user
+
+*if you do not have rails installed on your computer, follow the instructions outlined in
+http://rubyonrails.org/download/ to get rails on your computer
